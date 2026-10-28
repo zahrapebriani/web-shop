@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UrbanFit Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>UrbanFit Store</h1>
+    <p>Temukan gaya kasual favoritmu dengan harga yang ramah di kantong.</p>
+</header>
+
+<nav>
+    <a href="#beranda">Beranda</a>
+    <a href="#produk">Produk</a>
+    <a href="#tentang">Tentang</a>
+    <a href="#kontak">Kontak</a>
+</nav>
+
+<main>
+    <section id="beranda" class="hero">
+        <p class="label">CASUAL WEAR & STREETWEAR</p>
+        <h2>Tampil Nyaman,<br><span>Tampil Percaya Diri.</span></h2>
+        <p>Pilihan sneakers dan outfit kasual untuk menemani aktivitasmu setiap hari.</p>
+        <a href="#produk" class="btn">Lihat Produk</a>
+    </section>
+
+    <section id="produk">
+        <div class="judul">
+            <p class="label">PILIHAN UNTUK GAYAMU</p>
+            <h2>Produk Pilihan</h2>
+            <p>Temukan item favorit untuk melengkapi penampilanmu.</p>
+        </div>
+
+        <div class="produk-grid">
+            <div class="produk">
+                <img src="img/Sneakers.jpeg" alt="Sneakers Casual">
+                <div class="isi">
+                    <small>SEPATU</small>
+                    <h3>Sneakers Casual</h3>
+                    <p>Sneakers sporty untuk gaya sehari-hari.</p>
+                    <strong>Rp249.000</strong>
+                    <button onclick="checkout('Sneakers Casual')">Checkout Sekarang</button>
+                </div>
+            </div>
+
+            <div class="produk">
+                <img src="img/Baby Tee.jpeg" alt="Graphic Baby Tee">
+                <div class="isi">
+                    <small>ATASAN</small>
+                    <h3>Graphic Baby Tee</h3>
+                    <p>Kaos grafis dengan gaya kasual dan trendi.</p>
+                    <strong>Rp69.000</strong>
+                    <button onclick="checkout('Graphic Baby Tee')">Checkout Sekarang</button>
+                </div>
+            </div>
+
+            <div class="produk">
+                <img src="img/Baggy Jeans.jpeg" alt="Baggy Jeans">
+                <div class="isi">
+                    <small>BAWAHAN</small>
+                    <h3>Baggy Jeans</h3>
+                    <p>Celana denim longgar yang nyaman dipakai.</p>
+                    <strong>Rp179.000</strong>
+                    <button onclick="checkout('Baggy Jeans')">Checkout Sekarang</button>
+                </div>
+            </div>
+
+            <div class="produk">
+                <img src="img/Jacket Zipper.jpeg" alt="Graphic Zipper Jacket">
+                <div class="isi">
+                    <small>JAKET</small>
+                    <h3>Graphic Zipper Jacket</h3>
+                    <p>Jaket zipper untuk melengkapi gaya streetwear.</p>
+                    <strong>Rp159.000</strong>
+                    <button onclick="checkout('Graphic Zipper Jacket')">Checkout Sekarang</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tentang" class="info">
+        <p class="label">KENALAN DENGAN KAMI</p>
+        <h2>Tentang UrbanFit Store</h2>
+        <p>UrbanFit Store menyediakan fashion kasual untuk menunjang gaya sehari-hari dengan tampilan simpel, nyaman, dan harga bersahabat.</p>
+    </section>
+
+    <section id="kontak" class="info">
+        <p class="label">ADA YANG INGIN DITANYAKAN?</p>
+        <h2>Kontak</h2>
+        <p>Hubungi kami melalui email:</p>
+        <a href="mailto:admin@urbanfitstore.com">admin@urbanfitstore.com</a>
+    </section>
+</main>
+
+<footer>© 2026 UrbanFit Store. All rights reserved.</footer>
+
+<!-- CHECKOUT -->
+<div id="modal" class="modal">
+    <div class="kotak">
+        <button class="tutup" onclick="tutup()">×</button>
+        <h2>Checkout Pesanan</h2>
+        <p id="nama"></p>
+        <p>Harga: <strong id="harga"></strong></p>
+        <label>Jumlah:
+            <input type="number" id="jumlah" value="1" min="1" max="99" onchange="hitung()">
+        </label>
+        <h3>Total: <span id="total"></span></h3>
+        <button onclick="konfirmasi()">Konfirmasi Pesanan</button>
+        <button class="kembali" onclick="tutup()">Kembali Belanja</button>
+    </div>
+</div>
+
+<script>
+    const hargaProduk = {
+        "Sneakers Casual": 249000,
+        "Graphic Baby Tee": 69000,
+        "Baggy Jeans": 179000,
+        "Graphic Zipper Jacket": 159000
+    };
+
+    let harga = 0;
+
+    function rupiah(angka) {
+        return "Rp" + angka.toLocaleString("id-ID");
+    }
+
+    function checkout(namaProduk) {
+        document.getElementById("nama").textContent = namaProduk;
+        harga = hargaProduk[namaProduk];
+        document.getElementById("harga").textContent = rupiah(harga);
+        document.getElementById("jumlah").value = 1;
+        hitung();
+        document.getElementById("modal").style.display = "flex";
+    }
+
+    function hitung() {
+        let jumlah = Math.max(1, Math.min(99,
+            parseInt(document.getElementById("jumlah").value) || 1));
+        document.getElementById("jumlah").value = jumlah;
+        document.getElementById("total").textContent = rupiah(harga * jumlah);
+    }
+
+    function tutup() {
+        document.getElementById("modal").style.display = "none";
+    }
+
+    function konfirmasi() {
+        alert("Pesanan berhasil disimulasikan!\n" +
+            document.getElementById("nama").textContent +
+            "\nTotal: " + document.getElementById("total").textContent);
+        tutup();
+    }
+</script>
+
+</body>
+</html>

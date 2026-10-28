@@ -1,0 +1,214 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f7f5f0;
+    color: #38352f;
+    font-size: 14px;
+}
+
+header {
+    background: #26231f;
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+}
+
+header h1 { font-size: 30px; }
+header p { color: #c9c2b8; margin-top: 5px; }
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 15px;
+    background: #fffdf9;
+}
+
+nav a {
+    text-decoration: none;
+    color: #38352f;
+    font-weight: bold;
+}
+
+nav a:hover { color: #a65f40; }
+
+main {
+    max-width: 1120px;
+    margin: auto;
+    padding: 28px 0;
+}
+
+.hero {
+    background: linear-gradient(110deg, #e9dfcf, #d5c2ab);
+    border-radius: 16px;
+    padding: 45px 30px;
+    margin-bottom: 42px;
+}
+
+.label, small {
+    color: #b96f4d;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.hero h2 { margin: 10px 0; font-size: 24px; }
+.hero h2 span { color: #a65f40; }
+.hero p:not(.label) { margin: 12px 0 20px; color: #6e665c; }
+
+.btn {
+    display: inline-block;
+    background: #26231f;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.judul { text-align: center; margin-bottom: 25px; }
+.judul h2 { margin: 8px 0; font-size: 23px; }
+.judul p:last-child { color: #827d74; }
+
+.produk-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.produk {
+    background: #fffdf9;
+    border: 1px solid #ebe5dc;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.produk img {
+    width: 100%;
+    height: 195px;
+    padding: 10px;
+    object-fit: contain;
+    background: #f0ede7;
+}
+
+.isi {
+    padding: 14px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.isi h3 { margin: 5px 0; font-size: 15px; }
+.isi p { color: #827d74; font-size: 12px; margin: 6px 0; }
+.isi strong { color: #a65f40; margin: 5px 0 14px; }
+
+button {
+    border: none;
+    background: #26231f;
+    color: white;
+    padding: 11px 6px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: auto;
+}
+
+button:hover, .btn:hover { background: #a65f40; }
+
+.info {
+    background: #fffdf9;
+    border: 1px solid #ebe5dc;
+    border-radius: 12px;
+    padding: 25px 28px;
+    margin-top: 24px;
+}
+
+.info h2 { margin: 10px 0 14px; }
+.info p:not(.label) { color: #827d74; line-height: 1.8; }
+.info a { display: inline-block; margin-top: 10px; color: #a65f40; font-weight: bold; }
+
+footer {
+    background: #26231f;
+    color: #c9c2b8;
+    text-align: center;
+    padding: 20px;
+    font-size: 12px;
+}
+
+/* MODAL CHECKOUT */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #0009;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.kotak {
+    position: relative;
+    background: #fffdf9;
+    padding: 28px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 380px;
+}
+
+.kotak h2 { margin-bottom: 15px; }
+.kotak p, .kotak label { display: block; margin: 12px 0; }
+
+.kotak input {
+    width: 65px;
+    padding: 6px;
+    margin-left: 8px;
+}
+
+.kotak h3 { margin: 15px 0; }
+.kotak h3 span { color: #a65f40; }
+
+.kotak button { width: 100%; margin-top: 8px; }
+.kotak .tutup {
+    position: absolute;
+    right: 12px;
+    top: 8px;
+    width: auto;
+    background: transparent;
+    color: #26231f;
+    font-size: 24px;
+    padding: 0 5px;
+}
+
+.kotak .kembali {
+    background: transparent;
+    color: #26231f;
+    border: 1px solid #ebe5dc;
+}
+
+/* TAMPILAN HP DAN TABLET */
+@media (max-width: 900px) {
+    main { width: 92%; }
+    .produk-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 500px) {
+    header h1 { font-size: 25px; }
+    nav { gap: 18px; }
+    nav a { font-size: 12px; }
+    main { padding-top: 20px; }
+    .hero { padding: 30px 20px; }
+    .produk-grid { gap: 10px; }
+    .produk img { height: 140px; }
+    .isi { padding: 9px; }
+    .isi h3 { font-size: 12px; }
+    .isi p { font-size: 10px; }
+    .isi strong { font-size: 12px; }
+    .isi button { font-size: 10px; }
+}
